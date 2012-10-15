@@ -1,7 +1,8 @@
 var express = require('express'),
 	sio = require('socket.io'),
 	ejs = require('ejs'),
-	fs = require('fs');
+	fs = require('fs'),
+	mongoose = require('mongoose');
 
 var app = express();
 var pub = __dirname + '/public';
@@ -23,6 +24,10 @@ app.configure(function() {
 	Routing
 */
 app.get('/', function(req, res){
+	res.sendfile(__dirname + '/public/index.html');
+});
+
+app.get('/soundcloud-callback', function(req, res){
 	res.sendfile(__dirname + '/public/index.html');
 });
 

@@ -14,23 +14,144 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/lcdj.css">
         <link rel="stylesheet" href="css/bootstrap.css">
         <link href="css/bootstrap-responsive.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/soundcloud/sc-player-red.css" type="text/css">
 
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+
     </head>
-    <body>
+    <body onload="countdown(2012,10,18,19,00)">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
         <!-- Add your site or application content here -->
         <div class="container">
-            <h1>qkTemplate</h1>
+            <div class="navbar" id="top-nav">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="brand">La Chanson du Jeudi.</a>
+                        <ul class="nav pull-right">
+                            <li><a>à propos</a></li>
+                            <li><a>se joindre</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="well">
+
+                <div id="weeks">
+                    <div class="sc-player">
+                      <a  href="http://soundcloud.com/paisible/milah">Chorus baby</a>
+                      <a  href="http://soundcloud.com/jedisongs/de-lut-rus-la-lumi-re-maquette">De l'uterus</a>
+                      <a  href="http://soundcloud.com/jedisongs/le-masque">Autre de Ben</a>
+                    </div>
+
+                    <div class="sc-player hidden">
+                      <a  href="http://soundcloud.com/paisible/milah">Chorus baby</a>
+                      <a  href="http://soundcloud.com/jedisongs/de-lut-rus-la-lumi-re-maquette">De l'uterus</a>
+                      <a  href="http://soundcloud.com/jedisongs/le-masque">Autre de Ben</a>
+                    </div>
+                </div>
+
+                <div id="participating">
+                    <!--<h4>Qui participe cette semaine ?</h4>-->
+                </div>
+         
+                <!--<a class="btn btn-primary btn-large" id="participate">Je participe cette semaine !</a>-->
+                <div id="participate-buttons" class="btn-group">
+                  <a class="btn dropdown-toggle btn-primary btn-large" data-toggle="dropdown" href="#">
+                    Je participe cette semaine 
+                    <span class="caret" style="margin-left:10px"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                        <a id="how" href="#explanation" role="button" data-toggle="modal">Ça marche comment exactement ?</a>
+                    </li>
+                    <li>
+                        <a id="go">Ok, je m'inscris ! (Il reste <b><span id="dday"></span> jours</b>, <span id="dhour"></span> heures, <span id="dmin"></span> minutes et 
+                        <span id="dsec"></span> secondes avant la remise des copies) </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a>Je suis déjà inscrit, mais je veux changer un truc</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div id="explanation" class="modal hide fade">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3>Participer à La Chanson du Jeudi.</h3>
+                  </div>
+                  <div class="modal-body">
+                    <p>Pour participer, il suffit d'avoir un compte SoundCloud, et d'y uploader ta chanson.</p>
+                  </div>
+                  <!--<div class="modal-footer">
+                    <a href="#" class="btn">Close</a>
+                    <a href="#" class="btn btn-primary">Save changes</a>
+                  </div>-->
+                </div>
+
+                <div id="welcome" class="hidden">
+                    <img id="avatar" class="hidden"></img>
+                 
+                    <h3>
+                    Salut
+                    <span id="welcome-name"></span>
+                    !
+                    </h3>
+
+                    
+                    <div id="found-track" class="hidden">
+                        <span class="icon-music"></span>
+                        <span>On a trouvé ton morceau ! </span>
+                        <span id="track-title"></span>
+                    </div>
+
+                    <div id="not-found-track" class="hidden">
+                        <p>
+                            <span class="icon-question-sign"></span>
+                            <span>Hmmm... On ne trouve pas ton morceau pour cette semaine sur SoundCloud.</span>
+                        </p>
+                        <br>
+                        <div class="alert alert-info">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            Aurais-tu oublié d'ajouter le tag <b>#lcdj-saison2-semaine1</b> à sa description ?
+                        </div>
+                        <div class="btn-group">
+                          <button class="btn">C'est règlé !</button>
+                          <button class="btn">J'ai pas encore ma chanson - je l'upload d'ici jeudi</button>
+                          <button class="btn">Je comprends pas</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--<span id="username"></span>-->
+                
+
+            </div>
         </div>
+
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
+        <script src="js/underscore.js"></script>
+        <script src="js/bootstrap.js"></script>
+        
+        <!-- soundcloud player -->
+        <script src="//connect.soundcloud.com/sdk.js"></script>
+
+        <script type="text/javascript" src="js/soundcloud/soundcloud.player.api.js"></script>
+        <script type="text/javascript" src="js/soundcloud/sc-player.js"></script>
+
+        <script type="text/javascript" src="js/plugins/carousel2.js"></script>
+        <script type="text/javascript" src="js/countdown.js"></script>
+
         <script src="js/main.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
