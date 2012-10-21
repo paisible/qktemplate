@@ -31,5 +31,9 @@ app.get('/soundcloud-callback', function(req, res){
 	res.sendfile(__dirname + '/public/index.html');
 });
 
+app.get('/templates', function(req,res){
+	res.sendfile(__dirname + '/public/templates/templates.json');
+});
+
 
 app.listen(6969);

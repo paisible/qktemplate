@@ -1,6 +1,6 @@
 .sc-player {
   font: 12px arial, sans-serif;
-  background-color: red;
+  /*background-color: red;*/
   color: #333;
   font-size: 0.6em;
   line-height: 1.6em;
@@ -15,7 +15,7 @@
 /* scrubber */
 
 .sc-scrubber {
-  background-color: red;
+  background-color: black;
 }
 
 .sc-scrubber .sc-time-span {
@@ -39,6 +39,10 @@
 }
 
 /* controls */
+
+.sc-player .sc-controls{
+  background-color: black;
+}
 
 .sc-player .sc-controls a {
   color: transparent;

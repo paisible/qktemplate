@@ -40,7 +40,6 @@ function countdown(yr,m,d,hr,min){
     var dmin=Math.floor(((dd%(60*60*1000*24))%(60*60*1000))/(60*1000)*1);
     var dsec=Math.floor((((dd%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1);
     if(dday<=0&&dhour<=0&&dmin<=0&&dsec<=0){
-        document.getElementById('count2').innerHTML=current;
         document.getElementById('count2').style.display="inline";
         document.getElementById('count2').style.width="390px";
         document.getElementById('dday').style.display="none";
@@ -54,11 +53,12 @@ function countdown(yr,m,d,hr,min){
         return;
     }
     else {
-        document.getElementById('count2').style.display="none";
+        try{
         document.getElementById('dday').innerHTML=dday;
         document.getElementById('dhour').innerHTML=dhour;
         document.getElementById('dmin').innerHTML=dmin;
         document.getElementById('dsec').innerHTML=dsec;
         setTimeout("countdown(theyear,themonth,theday,thehour,theminute)",1000);
+        }catch(exception){}
     }
 }
