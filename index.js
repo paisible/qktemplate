@@ -7,9 +7,6 @@ var express = require('express'),
 var app = express();
 var pub = __dirname + '/public';
 
-var current_week = "saison2_semaine2";
-var past_week = "saison2_semaine1";
-
 app.configure(function() {
 	app.use(express.errorHandler({ dump: true, stack: true }));
 	app.use(express.cookieParser());
@@ -30,28 +27,10 @@ app.get('/', function(req, res){
 	res.sendfile(__dirname + '/public/index.html');
 });
 
-app.get('/soundcloud-callback', function(req, res){
-	res.sendfile(__dirname + '/public/index.html');
-});
 
-app.post('/signup/', function(req, res){
+app.post('/api/', function(req, res){
 	var data = req.body.data;
-	db.signup(current_week, data);
-	db.getWeek(current_week, function(d){
-		res.send(d);
-	});
-});
-
-app.get('/api/week/', function(req, res){
-	db.getWeek(current_week, function(d){
-		res.send(d);
-	});
-});
-
-app.get('/api/week/:name', function(req, res){
-	db.getWeek(req.params.name, function(d){
-		res.send(d);
-	});
+	res.send("foo");
 });
 
 app.get('/templates', function(req,res){

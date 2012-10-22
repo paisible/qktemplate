@@ -1,4 +1,3 @@
-
 _.extend(qk, {
 
 	render : function(cb){
@@ -8,13 +7,9 @@ _.extend(qk, {
         switch(this.render_type){
 
             case "foo" :
-                $(".well").append(output);
+                $("body").append(output);
                 break;
 
-            case "right-hand" :
-            	$(".right-hand").append(output);
-            	break;
-            
             default :
                 break;
         }
