@@ -9,9 +9,12 @@ qk.views.home = Backbone.View.extend((function(){
     render : function() {
       var self = this;
       _.each(this.options, function(option, key){ self[key] = option; });
-      
-      // this.out = "foo";
-      // qk.render.call(this);
+
+      lcdj.getWeek(function(d){
+        routes["participants"]();
+      });
+
+      $("#pp").trigger("click");
 
     },
 
@@ -27,12 +30,11 @@ qk.views.home = Backbone.View.extend((function(){
           
           Backbone.history.navigate("welcome", true);
           
-          if(!found){
-            Backbone.history.navigate("welcome/oops", true);
-          }
-          else{
-            Backbone.history.navigate("welcome/song_found", true);
-          }
+          lcdj.signup();
+
+          (typeof lcdj.my_song != "undefined") 
+          ? Backbone.history.navigate("welcome/song_found", true) 
+          : Backbone.history.navigate("welcome/oops", true);
         
         });
       });

@@ -18,21 +18,52 @@ lcdj.soundcloud = new function(){
 		});
 
         SC.get('/me/tracks', function(tracks) { 
-          
-          var found = false;
 
           _.each(tracks, function(track){
             
             if(track.description != null && track.description.indexOf("#lcdj-saison2-semaine1") != -1){
-              found = true;
               lcdj.my_song = track;
             }
 
           });
 
-          cb(found);
+          cb();
 
         });
-	}
+	};
 
 }
+
+lcdj.signup = function(){
+	$.ajax({
+		url  : "/signup/",
+		data : {
+			data : {
+				member : lcdj.me,
+				song   : lcdj.my_song
+			}
+		},
+		type : "POST",
+		success : function(d){
+			lcdj.week_data = d.documents;
+			Backbone.history.navigate("signup_success", true);
+		},
+		error   : function(){
+			Backbone.history.navigate("signup_error", true);
+		}
+	});
+}
+
+lcdj.getWeek = function(cb){
+	$.ajax({
+		url  : "/api/week/",
+		type : "GET",
+		success : function(d){
+			lcdj.week_data = d.documents;
+			cb();
+		},
+		error   : function(){
+		}
+	});
+}
+

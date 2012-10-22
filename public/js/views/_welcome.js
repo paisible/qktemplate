@@ -10,15 +10,14 @@ qk.views.welcome = Backbone.View.extend((function(){
       var self = this;
       _.each(this.options, function(option, key){ self[key] = option; });
       
-      $("#participate-buttons").addClass("hidden");
-      $("#not-found-track").addClass("hidden");
+      // $("#participate-buttons").addClass("hidden");
+      // $("#not-found-track").addClass("hidden");
 
-      $("#welcome").removeClass("hidden");
-      $("#welcome-name").text(lcdj.me.username);
-      $("#avatar").attr("src", lcdj.me.avatar_url);
+      this.out = ich.welcome({ name : lcdj.me.username });
+      qk.render.call(this);
 
-      /*this.out = "foo";
-      qk.render.call(this);*/
+      $('#welcome').modal()
+
     },
 
     events : {

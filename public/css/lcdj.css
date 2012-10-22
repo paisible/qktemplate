@@ -5,3 +5,16 @@
 #avatar{
 	border:1px solid #000;
 }
+
+.participant{
+	list-style-type : none;
+	display:inline;
+}
+
+.participant img{
+	border:1px solid #000;
+}
+
+#list{
+	margin-left:0px;
+}

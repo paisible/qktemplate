@@ -8,11 +8,11 @@ _.extend(qk, {
         switch(this.render_type){
 
             case "foo" :
-                $("body").append(output);
+                $(".well").append(output);
                 break;
 
-            case "t1"  :
-
+            case "right-hand" :
+            	$(".right-hand").append(output);
             	break;
             
             default :

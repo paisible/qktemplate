@@ -22,7 +22,7 @@
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 
     </head>
-    <body onload="countdown(2012,10,25,19,00)">
+    <body onload="countdown(2012,10,25,18,00)">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
@@ -30,109 +30,159 @@
         <!-- Add your site or application content here -->
         
         <div class="container">
-            <div class="navbar" id="top-nav">
+
+            <div class="navbar row" id="top-nav">
                 <div class="navbar-inner">
                     <div class="container">
                         <a class="brand">La Chanson du Jeudi.</a>
                         <ul class="nav pull-right">
-                            <li><a>à propos</a></li>
-                            <li><a>se joindre</a></li>
+                            <li><a href="#">à propos</a></li>
+                            <li><a href="#">se joindre</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="well">
 
-                <div id="weeks">
-                    <div class="sc-player" style="background:url(http://talkzimbabwe.com/wp-content/uploads/2012/08/Harare-open-mic.jpg);">
+            <div class="well row">
+
+                <div id="weeks" class="span5">
+                    <h5>La chanson de la semaine dernière :</h5>
+                    <div class="sc-player">
                       <a  href="http://soundcloud.com/paisible/milah">Chorus baby</a>
                       <a  href="http://soundcloud.com/ayoub-eastman/cheap-beat-second-half-beat">De l'uterus</a>
                       <a  href="http://soundcloud.com/jedisongs/le-masque">Autre de Ben</a>
                     </div>
-
                 </div>
 
-                <div id="participating">
-                    <!--<h4>Qui participe cette semaine ?</h4>-->
-                </div>
-         
-                <div id="participate-buttons" class="btn-group">
-                  <a class="btn dropdown-toggle btn-primary btn-large" data-toggle="dropdown" href="#">
-                    Je participe cette semaine 
-                    <span class="caret" style="margin-left:10px"></span>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li>
-                        <a id="how" href="#explanation" role="button" data-toggle="modal">Ça marche comment exactement ?</a>
-                    </li>
-                    <li>
-                        <a id="go" href="#">Ok, je m'inscris ! (Il reste <b><span id="dday"></span> jours</b>, <span id="dhour"></span> heures, <span id="dmin"></span> minutes et 
-                        <span id="dsec"></span> secondes avant la remise des copies) </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a>Je suis déjà inscrit, mais je veux changer un truc</a>
-                    </li>
-                  </ul>
-                </div>
+                <div class="span5 offset1 right-hand">
+                    <div id="#motivated">
+                        <h5>Les motivés pour cette semaine : </h5>
+                        <ul id="list" ></ul>
 
-                <div id="explanation" class="modal hide fade">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h3>Participer à La Chanson du Jeudi.</h3>
-                  </div>
-                  <div class="modal-body">
-                    <p>Pour participer, il suffit d'avoir un compte SoundCloud, et d'y uploader ta chanson.</p>
-                  </div>
-                  <!--<div class="modal-footer">
-                    <a href="#" class="btn">Close</a>
-                    <a href="#" class="btn btn-primary">Save changes</a>
-                  </div>-->
-                </div>
+                        <div id="participate-buttons" class="btn-group">
+                            <a id="pp" class="btn dropdown-toggle btn-primary btn-large" data-toggle="dropdown" href="#">
+                                Pour participer
+                                <span class="caret" style="margin-left:10px"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                <a id="how" href="#explanation" role="button" data-toggle="modal">Ça marche comment exactement ?</a>
+                                </li>
+                                <li>
+                                <a id="go" href="#">Ok, je m'inscris ! </a>
+                                </li>
+                                <!--<li>
+                                <a>Je suis déjà inscrit, mais je veux changer un truc</a>
+                                </li>-->
+                                <li class="divider"></li>
+                                <li>
+                                    <a>
+               
+                    Remise des copies dans <b><span id="dday"></span> jours</b>, <span id="dhour"></span> heures, <span id="dmin"></span> minutes.
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <br>
 
-                <div id="welcome" class="hidden">
+                </div>
+        
+            </div>
+
+        </div>
+
+        <script type="text/html" id="participant">
+            <li class='participant'>
+                <a href="{{ url }}" target="_blank">
+                    <img src="{{ avatar }}"/>
+                </a>
+            </li>
+        </script>
+
+        <script type="text/html" id="welcome">
+            <div id="welcome" class="modal hide fade">
                     <img id="avatar" class="hidden"></img>
                  
+                    <div class="modal-header">
                     <h3>
                     Salut
-                    <span id="welcome-name"></span>
+                    <span id="welcome-name">{{ name }}</span>
                     !
                     </h3>
-
-                    
-                    <div id="found-track" class="hidden">
-                        <span class="icon-music"></span>
-                        <span>On a trouvé ton morceau ! </span>
-                        <span id="track-title"></span>
                     </div>
 
-                    <div id="not-found-track" class="hidden">
+                    <div class="modal-body">
                         <p>
-                            <span class="icon-question-sign"></span>
-                            <span>Hmmm... On ne trouve pas ton morceau pour cette semaine sur SoundCloud.</span>
+                            Bravo, t'es fort.
                         </p>
-                        <br>
-                        <div class="alert alert-info">
-                            <button type="button" class="close" data-dismiss="alert">×</button>
-                            Aurais-tu oublié d'ajouter le tag <b>#lcdj-saison2-semaine1</b> à sa description ?
-                        </div>
-                        <div class="btn-group">
-                          <button class="btn">C'est règlé !</button>
-                          <button class="btn">J'ai pas encore ma chanson - je l'upload d'ici jeudi</button>
-                          <button class="btn">Je comprends pas</button>
-                        </div>
+                        <p>
+                            Une chanson par semaine, c'est pas donné à tout le monde, alors on te félicite d'avance.
+                        </p>
+
                     </div>
 
+            </div> 
+        </script>
+
+        <script type="text/html" id="song_found">
+            <div id="found-track">
+               
+                <p>On a trouvé ton morceau pour cette semaine: </p>
+                <span class="icon-music"></span>
+                <a href="{{ url }}" target="_blank" id="track-title">{{ song_title }}</a>
+                <br/><br>
+                <div class="alert alert-info" id="is_private">
+                    Cette chanson est présentement en mode <b>privé</b>, ce qui est bien (il faut pas la faire écouter avant jeudi ! ). Par contre, il ne faudra pas oublier de changer
+                    sa visibilité pour la mettre en <b>public</b> jeudi.
                 </div>
-
-                <!--<span id="username"></span>-->    
-
+                <br/>
+                <div class="btn-group">
+                  <button id="add_song" class="btn">Parfait !</button>
+                </div>
             </div>
+        </script>
+
+        <script type="text/html" id="signup_success">
+            <p>
+                Ok cool ! Tes inscrit pour cette semaine !
+            </p>
+        </script>
+
+        <script type="text/html" id="song_not_found">
+            <div id="not-found-track">
+
+                <div class="alert alert-info">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    Pour qu'on puisse trouver ta chanson, n'oublie pas d'ajouter : <br>
+                    <b>#lcdj-saison2-semaine1</b> à sa description
+                </div>
+            
+                <button id="signup_no_song" class="btn">Cool !</button>
+              
+            </div>
+        </script>
+
+        <div id="explanation" class="modal hide fade">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3>Participer à La Chanson du Jeudi.</h3>
+          </div>
+          <div class="modal-body">
+            <p>Pour participer, il suffit d'uploader ta chanson sur SoundCloud, en ajoutant un "tag" spécial dans la description de la chanson.
+            </p>
+            <p>
+            Le tag de cette semaine est : <b>#lcdj-saison2-semaine2</b></p>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn">Ok</a>
+          </div>
         </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
+        <script src="js/libs/icanhaz.js"></script>
         <script src="js/libs/underscore.js"></script>
         <script src="js/libs/backbone.js"></script>
         <script src="js/libs/backbone-filter.js"></script>
@@ -146,6 +196,8 @@
         <script src="js/views/_welcome.js"></script>
         <script src="js/views/_song_not_found.js"></script>
         <script src="js/views/_song_found.js"></script>
+        <script src="js/views/_participants.js"></script>
+        <script src="js/views/_signup_success.js"></script>
 
         <script src="js/qkrouter.js"></script>
         <script src="js/qkrender.js"></script>
