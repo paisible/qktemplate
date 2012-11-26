@@ -7,8 +7,8 @@ var express = require('express'),
 var app = express();
 var pub = __dirname + '/public';
 
-var current_week = "saison2_semaine2";
-var past_week = "saison2_semaine1";
+var current_week = "saison2_semaine1";
+var past_week = "saison2_semaine0";
 
 app.configure(function() {
 	app.use(express.errorHandler({ dump: true, stack: true }));

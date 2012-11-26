@@ -13,12 +13,12 @@
 	- /js :)
 	- /css :)
 	- /images :)
-- /src :)
+- /libs :)
 
 
 - npm packages
 	- express :)
-	- (MongoDB ORM)
+	- Mongous :)
 	- socket.io :)
 	- ejs :)
 
