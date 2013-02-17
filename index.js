@@ -1,8 +1,8 @@
 var express = require('express'),
 	sio = require('socket.io'),
 	ejs = require('ejs'),
-	fs = require('fs'),
-	db = require('./libs/db').db;
+	fs = require('fs');//,
+	//db = require('./libs/db').db;
 
 var app = express();
 var pub = __dirname + '/public';
